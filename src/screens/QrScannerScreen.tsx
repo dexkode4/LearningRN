@@ -19,6 +19,8 @@ export const ScanScreen = () => {
       <QRCodeScanner
         onRead={onSuccess}
         cameraProps={{ flashMode: RNCamera.Constants.FlashMode.auto }}
+        reactivate={true}
+        showMarker={true}
       />
     );
 }
