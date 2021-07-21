@@ -1,13 +1,14 @@
 import React from 'react'
-import { View, Text , StyleSheet} from 'react-native'
+import { View, Text , StyleSheet, StyleProp, ViewStyle} from 'react-native'
 
 interface IScreenProps {
     children: React.ReactNode;
+    style?: any;
 }
 
-export const Screen = ({children}: IScreenProps) => {
+export const Screen = ({children, style}: IScreenProps) => {
     return (
-        <View style={styles.screen}>
+        <View style={{...styles.screen, ...style}}>
             {children}
         </View>
     )
