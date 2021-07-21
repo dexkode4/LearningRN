@@ -3,12 +3,12 @@ import { View, Text , StyleSheet, StyleProp, ViewStyle} from 'react-native'
 
 interface IScreenProps {
     children: React.ReactNode;
-    style?: any;
+    style?: ViewStyle;
 }
 
 export const Screen = ({children, style}: IScreenProps) => {
     return (
-        <View style={{...styles.screen, ...style}}>
+        <View  style={[styles.screen, style]}>
             {children}
         </View>
     )

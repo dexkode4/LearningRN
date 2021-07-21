@@ -2,19 +2,30 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {View, TouchableWithoutFeedback, StyleSheet} from 'react-native';
+import {View, TouchableWithoutFeedback, StyleSheet, ViewStyle} from 'react-native';
 
-const NeumorphismButton = (props: any) => {
-  const {size = 12} = props;
+
+interface INeumorphismButtonProps {
+  children: React.ReactNode,
+  style?: ViewStyle,
+  size?: number,
+  onPress: () => void;
+}
+
+export const NeumorphismButton = ({children, style , size = 12, onPress}: INeumorphismButtonProps) => {
   const [isDown, setDown] = useState(false);
+
   const handlePressIn = useCallback(() => {
     setDown(true);
+    onPress()
   }, [setDown]);
+
   const handlePressOut = useCallback(() => {
     setDown(false);
   }, [setDown]);
 
   const gradColors = isDown ? ['#4da7db', '#5bc6ff'] : ['#5bc6ff', '#4da7db'];
+
   const buttonCommonStyle = {
     borderRadius: size,
     shadowRadius: size * 1.5,
@@ -43,8 +54,8 @@ const NeumorphismButton = (props: any) => {
             useAngle={true}
             angle={145}
             angleCenter={{x: 0.5, y: 0.5}}
-            style={[styles.buttonFace, buttonFaceStyle, props.style]}>
-            {props.children}
+            style={[styles.buttonFace, buttonFaceStyle, style]}>
+            {children}
           </LinearGradient>
         </View>
       </View>

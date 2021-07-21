@@ -1,8 +1,12 @@
 import React from 'react';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {CATEGORIES} from '../data/dummy-data';
-import {Screen} from '../components/Screen';
 
 interface IrenderGridItemProps {
   item: {
@@ -20,29 +24,32 @@ export const HomeScreen: NavigationStackScreenComponent = ({navigation}) => {
         onPress={() => {
           navigation.navigate(itemData.item.screen);
         }}
-        style={{...styles.gridItem,...{backgroundColor: itemData.item.color}}}>
-        <View>
+        style={[styles.gridItem,{backgroundColor: itemData.item.color}]}>
           <Text>{itemData.item.title}</Text>
-        </View>
       </TouchableOpacity>
     );
   };
 
   return (
-      <FlatList data={CATEGORIES} numColumns={2} renderItem={renderGridItem} style={styles.homeScreen} />
+      <FlatList
+        data={CATEGORIES}
+        numColumns={2}
+        renderItem={renderGridItem}
+        style={styles.homeScreen}
+      />
   );
 };
 
 const styles = StyleSheet.create({
   homeScreen: {
-    // backgroundColor:'#e0e0e0'
+    backgroundColor: '#e0e0e0',
+    flex: 1,
   },
   gridItem: {
     flex: 1,
     margin: 15,
     height: 150,
     borderRadius: 10,
-    backgroundColor: '#e0e0e0',
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
@@ -52,7 +59,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.84,
-
     elevation: 5,
   },
 });
