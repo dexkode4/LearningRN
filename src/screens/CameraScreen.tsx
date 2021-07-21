@@ -3,7 +3,7 @@ import RNFS from 'react-native-fs';
 import {Text, StyleSheet, Alert} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {useCamera} from 'react-native-camera-hooks';
-import { CustomButton } from '../components/CustomButton';
+import { CustomButton } from '../../components/CustomButton';
 
 export const CameraScreen = () => {
   const [{cameraRef}, {takePicture}] = useCamera();
